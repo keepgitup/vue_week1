@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.物件字面值 縮寫
+        const obj = {
+            myName: '物件',
+            fn: function() {
+                return this.myName;
+            }
+
+            //可改寫成 將冒號跟function拿掉 結果是一模一樣的
+
+            // fn() {
+            //     return this.myName;
+            // }
+
+        }
+        console.log(obj.fn());
+
+        const myName1 = 'Casper';
+        const auntie = 'beauty auntie';
+        //if 要在obj 也就是物件裡面放入剛才宣告後的變數 當作屬性的話
+        const obj1 = {
+            myName1: myName1,
+            //屬性名稱也可縮寫 寫成 myName,
+            // myName,(你也可把它當成他是去搜尋外面的變數,所以物件裡面可以不用重複寫值)
+            auntie,
+
+        };
+
+        console.log(obj1);
+        //#2 展開 means ...
+        const groupA = ['ming', 'jan', 'aunti'];
+        const groupB = ['mom', 'dad'];
+        //原來2..
+        const groupAll = groupA.concat(groupB);
+        //原來3..
+        //精簡const groupAll = [...groupA, ...groupB];
+        //原來1...超展開
+        console.log(...groupA);
+        console.log(groupAll);
+
+        //--------
+        //複製一個 並且新增一個方法
+        const methods = {
+            myName2: '方法集合1',
+            fn2() {
+                console.log(this.myName2);
+            }
+        }
+
+        const methods2 = methods;
+        methods.fn3 = function() {
+                console.log(this.myName);
+            }
+            //Q請問 這裡的methods是否能叫的動fn3?? 結果是可以的 但就不是複製且新增了
+        methods.fn3()
+            //那這兩個方法是否有一樣呢?? 結果為true
+        console.log(methods === methods2);
+    </script>
+</body>
+
+</html>

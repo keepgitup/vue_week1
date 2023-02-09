@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+
+  <body>
+    <!-- //具名會有{} from js檔案 -->
+    <!-- // A // const myName = 'casper'; // function callMyName() { // console.log(myName); // } // callMyName(); // B const obj = { name: '小明', } -->
+    <!-- // correct但會跑紅字出來..因為..no14 -->
+
+    <div id="app">
+      {{order}}
+      <table>
+        <thead>
+          <tr>
+            <th width="200">item</th>
+            <th>price</th>
+            <th>number</th>
+            <th width="150">amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!-- <td>greenMacron</td> -->
+            <td>{{order[0].name}}</td>
+            <td>120</td>
+            <td>3</td>
+            <td>$120</td>
+          </tr>
+          <tr>
+            <!-- <td>pinkMacron</td> -->
+            <td>{{order[1].name}}</td>
+            <td>120</td>
+            <td>2</td>
+            <td>$240</td>
+          </tr>
+          <tr>
+            <!-- <td>bothMacron</td> -->
+            <td>{{order[2].name}}</td>
+            <td>200</td>
+            <td>7</td>
+            <td>$1400</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">total amount:</td>
+            <td>NT$ 1760</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </body>
+  <script type="module">
+    import { myName, callMyName } from "./esm.js";
+    console.log(myName);
+    import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.esm-browser.min.js";
+    const order = [
+      { name: "greenMacron", price: 120, quantity: 3 },
+      { name: "pinkMacron", price: 120, quantity: 2 },
+      { name: "bothMacron", price: 200, quantity: 7 },
+    ];
+    const total = 2000;
+    console.log(Vue);
+    const app = {
+      data() {
+        return { order, total };
+      },
+    };
+
+    createApp(app).mount("#app");
+  </script>
+</html>
