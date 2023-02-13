@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      const data = [
+        {
+          id: 1,
+          content: "我是卡斯柏",
+        },
+        {
+          id: 2,
+          content: "我是小明",
+        },
+      ];
+      // 新增數字來記錄目前id數量,比方紀錄data長度
+      let num = data.length;
+
+      // 新增資料
+      function addItem(content) {
+        // 先把id數字做累加
+        num++;
+        //
+        data.push({
+          id: num,
+          content,
+        });
+        console.log(data);
+      }
+      //   移動addItem到51行
+      addItem("我叫做杰倫");
+
+      function removeItem(id) {
+        // 減法 則關注在減去的陣列'索引'位置為多少. 原本的const index改成let index較易懂
+        let index = 0;
+        // 但需要取出索引位置跟item時,即用到forEach時.
+        data.forEach((item, i) => {
+          if (item.id === id) {
+            // 比對相同物件
+            index = i;
+            console.log("第" + i + "個");
+          }
+        });
+        // 刪除 (索引位置,刪除
+        data.splice(index, 1);
+        console.log(index);
+        console.log(1, data);
+      }
+      //   addItem("我叫做杰倫");
+      removeItem(2);
+    </script>
+  </body>
+</html>
